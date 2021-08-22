@@ -77,7 +77,7 @@ namespace ETS.DataAccess.Repository
             return await query.FirstOrDefaultAsync();
         }
 
-     
+
 
         public void Remove(T entity)
         {

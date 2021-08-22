@@ -16,6 +16,8 @@ namespace ETS.DataAccess.Repository
         {
             _db = db;
         }
+
+      
         public void Update(Bank bank)
         {
             _db.Bank.Update(bank);
