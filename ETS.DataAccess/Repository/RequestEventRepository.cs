@@ -8,18 +8,18 @@ using System.Text;
 
 namespace ETS.DataAccess.Repository
 {
-    public class UserRepository : RepositoryAsync<UserClient>, IUserRepository
+    public class RequestEventRepository : RepositoryAsync<RequestEvent>, IRequestEventRepository
     {
         private readonly ApplicationDbContext _db;
 
-        public UserRepository(ApplicationDbContext db) : base(db)
+        public RequestEventRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
-        public void Update(UserClient user)
+
+        public void Update(RequestEvent requestEvent)
         {
-            _db.User_client.Update(user);
-         
+            _db.Request_event.Update(requestEvent);
         }
     }
 }

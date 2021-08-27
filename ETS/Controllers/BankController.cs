@@ -20,13 +20,14 @@ namespace ETS.Controllers
 
 
 
-        //[Route("~/Bank/paging")]
-        //public async Task<IActionResult> Paging(int page_no)
-        //{
-        //    int page_size = 10;
-        //    IEnumerable<Bank> list = await _unitOfWork.Bank.GetAllAsync().ToPageList(pageNumber, pageSize); ;
-        //    return Json(new { success = true, message = list });
-        //}
+        [Route("~/Bank/paging")]
+        public async Task<IActionResult> Paging(int page_no,int page_size)
+        {
+           
+            IEnumerable<Bank> list = await _unitOfWork.Bank.GetAllAsync();
+            var Pagedlist = list.Skip((page_no - 1) * page_size).Take(page_size).ToList();
+            return Json(new { success = true, message = list });
+        }
 
         [HttpGet]
         [Route("~/Bank/GetList")]

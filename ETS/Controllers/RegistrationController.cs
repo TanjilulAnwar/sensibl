@@ -24,7 +24,7 @@ namespace ETS.Controllers
         [Route("~/User/GetList")]
         public async Task<IActionResult> UserList()
         {
-            IEnumerable<UserClient> userlist = await _unitOfWork.User.GetAllAsync();
+            IEnumerable<UserClient> userlist = await _unitOfWork.UserClient.GetAllAsync();
             return Json(new { success = true, message = userlist });
 
         }
@@ -45,12 +45,12 @@ namespace ETS.Controllers
                     if (userClient.id == 0)
                     {
 
-                        await _unitOfWork.User.AddAsync(userClient);
+                        await _unitOfWork.UserClient.AddAsync(userClient);
 
                     }
                     else
                     {
-                        _unitOfWork.User.Update(userClient);
+                        _unitOfWork.UserClient.Update(userClient);
 
                     }
                     await _unitOfWork.SaveAsync();
@@ -74,18 +74,16 @@ namespace ETS.Controllers
 
 
 
-
-
         [HttpDelete]
         [Route("~/User/delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            UserClient userClient = await  _unitOfWork.User.GetFirstOrDefaultAsync(u=>u.id==id);
+            UserClient userClient = await  _unitOfWork.UserClient.GetFirstOrDefaultAsync(u=>u.id==id);
             if (userClient == null)
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
-             _unitOfWork.User.Remove(userClient);
+             _unitOfWork.UserClient.Remove(userClient);
             await _unitOfWork.SaveAsync(); 
             return Json(new { success = true, message = "Delete Successful" });
 

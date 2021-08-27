@@ -1,8 +1,5 @@
-﻿
-using ETS.Models.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ETS.Models.Models;
+
 
 namespace ETS.DataAccess.Repository.IRepository
 {
